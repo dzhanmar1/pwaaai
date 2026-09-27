@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домбровский: Хранитель древностей</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" style="position: fixed; inset: 0; background: linear-gradient(135deg, #e0f2e9, #ffffff); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-main);">
+        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 6rem; color: var(--accent-green); margin-bottom: 30px;"></i>
+        <h2 style="font-size: 3rem; color: var(--accent-green); margin-bottom: 20px; font-family: var(--font-heading);">Подготовка урока...</h2>
+        <div style="width: 400px; height: 15px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);">
+            <div id="preloader-bar" style="width: 0%; height: 100%; background: var(--accent-green); transition: width 0.3s; border-radius: 10px;"></div>
+        </div>
+        <p id="preloader-text" style="margin-top: 15px; font-size: 1.5rem; color: #555;">Загрузка ресурсов: 0%</p>
+        <button id="preloader-start-btn" style="display: none; margin-top: 40px; font-size: 2.2rem; padding: 15px 50px; background: var(--accent-green); color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 10px 20px rgba(42,157,143,0.3); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="startLesson()">Начать урок</button>
+    </div>
+    <!-- Атмосферный фон "Город-сад" -->
+    <div class="aurora-container">
+        <div class="aurora-blob ab-1"></div>
+        <div class="aurora-blob ab-2"></div>
+        <div class="aurora-blob ab-3"></div>
+        <div class="aurora-blob ab-4"></div>
+    </div>
+
+    <!-- Падающие листья на фоне -->
+    <div class="bg-leaves">
+        <div class="bg-leaf" style="left: 10%; animation-duration: 15s; animation-delay: 0s;"><i
+                class="fa-solid fa-leaf"></i></div>
+        <div class="bg-leaf" style="left: 30%; animation-duration: 18s; animation-delay: 5s; color: #d08c60;"><i
+                class="fa-solid fa-leaf"></i></div>
+        <div class="bg-leaf" style="left: 50%; animation-duration: 14s; animation-delay: 2s;"><i
+                class="fa-solid fa-leaf"></i></div>
+        <div class="bg-leaf" style="left: 70%; animation-duration: 17s; animation-delay: 7s; color: #ffd166;"><i
+                class="fa-solid fa-leaf"></i></div>
+        <div class="bg-leaf" style="left: 90%; animation-duration: 16s; animation-delay: 1s;"><i
+                class="fa-solid fa-leaf"></i></div>
+    </div>
+
+    <main id="presentation">
+        <!-- Слайд 1: Добро пожаловать -->
+        <div class="slide active" id="slide-1">
+            <div class="slide-content interactive-split" style="padding: 0; overflow: hidden; background: transparent; border: none; box-shadow: none;">
+                <div style="display: flex; width: 100%; height: 100%; background: var(--glass-bg); backdrop-filter: blur(25px); border-radius: 40px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);">
+                    <div class="split-side stagger-1" style="flex: 1.2; padding: 80px; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at top left, rgba(255,255,255,0.95), rgba(255,255,255,0.4));">
+                        <h1 class="title" style="font-size: 5.5rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px; color: var(--accent-green); line-height: 1.1;">Открытый урок</h1>
+                        <h2 class="subtitle" style="color: var(--accent-orange); font-size: 3.5rem; margin-bottom: 30px;">7 «А» класс</h2>
+                        <div style="width: 120px; height: 6px; background: var(--accent-green); margin-bottom: 30px; border-radius: 5px;"></div>
+                        <p class="theme" style="font-size: 2rem; font-weight: bold; color: var(--text-secondary);">Добро пожаловать в путешествие во времени!</p>
+                    </div>
+                    <div class="split-side stagger-2" style="flex: 1; position: relative; padding: 0;">
+                        <img src="images/almaty_vintage.jpg" alt="Алматы" style="width: 100%; height: 100%; object-fit: cover; filter: sepia(0.3) contrast(1.1);">
+                        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, transparent 20%); pointer-events: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 2: Психологический тренинг -->
+        <div class="slide" id="slide-2">
+            <div class="slide-content center-content pulse-bg" style="background: linear-gradient(135deg, #FFD166, #F4A261); border-radius: 40px; border: 8px solid white;">
+                <div class="stagger-1" style="display: flex; justify-content: center; align-items: center;">
+                    <div class="pulse-glow" style="width: 200px; height: 200px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                        <i class="fa-solid fa-face-smile-beam" style="font-size: 12rem; color: white; filter: drop-shadow(0 15px 25px rgba(231,111,81,0.4));"></i>
+                    </div>
+                </div>
+                <div class="stagger-2">
+                    <h2 style="font-size: 5.5rem; color: white; text-shadow: 0 5px 15px rgba(231,111,81,0.3); margin-bottom: 35px;">Психологический настрой</h2>
+                </div>
+                <div class="stagger-3">
+                    <div class="card-3d" style="background: white; padding: 40px 60px; border-radius: 30px; box-shadow: 0 20px 50px rgba(231,111,81,0.25); max-width: 900px; text-align: center;">
+                        <p style="font-size: 2.4rem; font-weight: 700; color: #E76F51; line-height: 1.6;">Улыбнитесь друг другу, почувствуйте поддержку команды.<br><span style="color: var(--accent-green);">С хорошим настроением любые задачи по плечу!</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 3: Деление на группы -->
+        <div class="slide" id="slide-3">
+            <div class="slide-content center-content pulse-bg">
+                <div class="stagger-1"><h2 style="font-size: 4.5rem; margin-bottom: 15px; color: var(--accent-green);">Деление на команды</h2></div>
+                <div class="stagger-2"><p style="font-size: 2rem; color: var(--text-secondary); margin-bottom: 60px;">Выберите свою роль на сегодняшний урок</p></div>
+                <div class="stagger-3" style="display: flex; gap: 60px; justify-content: center; width: 100%; max-width: 1200px;">
+                    
+                    <div class="card-3d" style="flex: 1; background: linear-gradient(135deg, #ffffff, #f0f7f4); padding: 70px 40px; border-radius: 40px; border: 2px solid rgba(42, 157, 143, 0.3); box-shadow: 0 20px 50px rgba(42, 157, 143, 0.15); border-bottom: 15px solid #2A9D8F; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -30px; right: -30px; opacity: 0.05; pointer-events: none;"><i class="fa-solid fa-compass" style="font-size: 25rem;"></i></div>
+                        <i class="fa-solid fa-compass" style="font-size: 7rem; color: #2A9D8F; margin-bottom: 30px; filter: drop-shadow(0 10px 10px rgba(42,157,143,0.3));"></i>
+                        <h3 style="color: #1e3a29; font-size: 3.2rem; margin-bottom: 20px;">Путешественники</h3>
+                        <p style="font-size: 1.6rem; color: #555; line-height: 1.5;">Исследователи новых горизонтов.</p>
+                    </div>
+                    
+                    <div class="card-3d" style="flex: 1; background: linear-gradient(135deg, #ffffff, #fff5f0); padding: 70px 40px; border-radius: 40px; border: 2px solid rgba(231, 111, 81, 0.3); box-shadow: 0 20px 50px rgba(231, 111, 81, 0.15); border-bottom: 15px solid #E76F51; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -30px; right: -30px; opacity: 0.05; pointer-events: none;"><i class="fa-solid fa-pen-ruler" style="font-size: 25rem;"></i></div>
+                        <i class="fa-solid fa-pen-ruler" style="font-size: 7rem; color: #E76F51; margin-bottom: 30px; filter: drop-shadow(0 10px 10px rgba(231,111,81,0.3));"></i>
+                        <h3 style="color: #1e3a29; font-size: 3.2rem; margin-bottom: 20px;">Архитекторы</h3>
+                        <p style="font-size: 1.6rem; color: #555; line-height: 1.5;">Те, кто создает надежный фундамент.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 4: Правила группы -->
+        <div class="slide" id="slide-4">
+            <div class="slide-content center-content pulse-bg">
+                <div class="stagger-1"><h2 style="font-size: 4.5rem; margin-bottom: 40px; color: var(--accent-green);">Правила работы в команде</h2></div>
+                <div class="stagger-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; width: 100%;">
+                    <div class="card-3d" style="background: white; padding: 40px; border-radius: 30px; display: flex; align-items: center; gap: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 100px; height: 100px; background: rgba(106, 153, 78, 0.1); border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-ear-listen" style="color: #6A994E; font-size: 4rem;"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <h3 style="font-size: 2.5rem; color: #333; margin-bottom: 10px;">Слушай</h3>
+                            <p style="font-size: 1.6rem; color: #666;">Внимательно слушай товарища.</p>
+                        </div>
+                    </div>
+                    <div class="card-3d" style="background: white; padding: 40px; border-radius: 30px; display: flex; align-items: center; gap: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 100px; height: 100px; background: rgba(233, 196, 106, 0.1); border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-volume-low" style="color: #E9C46A; font-size: 4rem;"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <h3 style="font-size: 2.5rem; color: #333; margin-bottom: 10px;">Вполголоса</h3>
+                            <p style="font-size: 1.6rem; color: #666;">Не мешайте другим группам.</p>
+                        </div>
+                    </div>
+                    <div class="card-3d" style="background: white; padding: 40px; border-radius: 30px; display: flex; align-items: center; gap: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 100px; height: 100px; background: rgba(231, 111, 81, 0.1); border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-hand-sparkles" style="color: #E76F51; font-size: 4rem;"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <h3 style="font-size: 2.5rem; color: #333; margin-bottom: 10px;">Участвуй</h3>
+                            <p style="font-size: 1.6rem; color: #666;">Активно предлагай свои идеи.</p>
+                        </div>
+                    </div>
+                    <div class="card-3d" style="background: white; padding: 40px; border-radius: 30px; display: flex; align-items: center; gap: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+                        <div style="width: 100px; height: 100px; background: rgba(42, 157, 143, 0.1); border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-people-group" style="color: #2A9D8F; font-size: 4rem;"></i>
+                        </div>
+                        <div style="text-align: left;">
+                            <h3 style="font-size: 2.5rem; color: #333; margin-bottom: 10px;">Уважай</h3>
+                            <p style="font-size: 1.6rem; color: #666;">Цени мнение каждого в команде.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 5: Лист самооценки -->
+        <div class="slide" id="slide-5">
+            <div class="slide-content center-content pulse-bg" style="background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6)); border-radius: 40px;">
+                <div class="stagger-1"><h2 style="font-size: 5rem; color: var(--accent-green); margin-bottom: 25px; text-shadow: 0 5px 15px rgba(0,0,0,0.1);">Лист самооценки</h2></div>
+                <div class="stagger-2"><p style="font-size: 2.2rem; color: #555; max-width: 900px; margin: 0 auto 60px; line-height: 1.5;">Возьмите физический оценочный лист со своей парты. Честно оцените свой личный вклад на каждом этапе урока.</p></div>
+                <div class="stagger-3">
+                    <div class="card-3d pulse-glow" style="background: white; border-radius: 50%; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; box-shadow: 0 30px 60px rgba(233,196,106,0.4); border: 15px solid #f9fbfb;">
+                        <i class="fa-solid fa-clipboard-check" style="font-size: 18rem; color: #E9C46A; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 6: Домашнее задание (Обручев) -->
+        <div class="slide" id="slide-6">
+            <div class="slide-content split-layout" style="background: radial-gradient(circle at right, rgba(42,157,143,0.1), transparent 50%);">
+                <div class="stagger-1 text-block" style="padding-right: 50px;">
+                    <h2 style="font-size: 4rem; color: var(--accent-green); margin-bottom: 20px;"><i class="fa-solid fa-house-chimney" style="color: #E76F51;"></i> Проверка Д/З</h2>
+                    <p style="font-size: 2.2rem; color: #333; margin-bottom: 10px;">В. А. Обручев</p>
+                    <p style="font-size: 3rem; font-weight: bold; color: var(--accent-green); margin-bottom: 40px;">«Земля Санникова»</p>
+                    
+                    <div class="highlight-box card-3d" style="background: white; border-left: 8px solid #2A9D8F; padding: 40px; border-radius: 20px;">
+                        <p style="font-weight: bold; font-size: 1.8rem; color: #2A9D8F; margin-bottom: 15px;"><i class="fa-solid fa-tree"></i> Дерево предсказаний</p>
+                        <p style="font-size: 1.6rem; line-height: 1.6;">Сравните ваши варианты возможного развития событий с настоящей концовкой романа. Совпали ли догадки с автором?</p>
+                    </div>
+                </div>
+                <div class="stagger-2 center-content" style="position: relative;">
+                    <div class="card-3d pulse-glow" style="background: white; border-radius: 50%; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; box-shadow: 0 30px 60px rgba(0,0,0,0.15); position: relative; z-index: 2;">
+                        <i class="fa-solid fa-tree" style="font-size: 18rem; background: -webkit-linear-gradient(-45deg, #2A9D8F, #6A994E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 10px 15px rgba(42,157,143,0.3));"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 7: Введение -->
+        <div class="slide" id="slide-7">
+            <div class="slide-content center-content">
+                <div class="stagger-1">
+                    <h1 class="title">Юрий Домбровский</h1>
+                </div>
+                <div class="stagger-2">
+                    <h2 class="subtitle">«Хранитель древностей»</h2>
+                </div>
+                <div class="stagger-3">
+                    <p class="theme">Алматы — Город-сад. Архитектура природы и творение человека.</p>
+                </div>
+                <div class="stagger-4 img-container tilt-effect" style="max-width: 700px; margin: 0 auto;">
+                    <img src="images/almaty_vintage.jpg" alt="Старая Алма-Ата">
+                    <div class="img-overlay">Нажмите стрелку вправо ➔</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 8: Контраст прибытия -->
+        <div class="slide" id="slide-8">
+            <div class="slide-content interactive-split">
+                <div class="split-side stagger-1">
+                    <h2>Хмурая Москва</h2>
+                    <p><i>«Выезжал я из Москвы в хмурую и тёплую погодку...»</i></p>
+                    <div class="img-container">
+                        <img src="images/contrast_moscow_almaty.jpg" alt="Серый город"
+                            style="filter: grayscale(100%) contrast(1.2);">
+                    </div>
+                </div>
+                <div class="split-side stagger-2">
+                    <h2>Цветущий Алматы</h2>
+                    <p><i>«...и вдруг выбежала навстречу целая семья высоких, гибко изогнутых деревьев. Восточные
+                            танцовщицы...»</i></p>
+                    <div class="img-container">
+                        <img src="images/almaty_green_tiers.jpg" alt="Цветущий сад">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 9: Творение человека (Собор Зенкова) -->
+        <div class="slide" id="slide-9">
+            <div class="slide-content split-layout">
+                <div class="stagger-1 text-block">
+                    <h2>Дворец Шахерезады</h2>
+                    <p>Вознесенский кафедральный собор — уникальное творение инженера А.П. Зенкова.</p>
+                    <div class="highlight-box">
+                        <p><b>Секрет устойчивости:</b> "Земля уходила из-под ног, а колокольня качалась и гнулась, как
+                            вершина высокого дерева... Ни одного стеклышка не разбилось!"</p>
+                    </div>
+                    <p class="theme">Дерево, выстоявшее в землетрясении 1911 года</p>
+                </div>
+                <div class="stagger-2 img-container tilt-effect">
+                    <img src="images/zenkov_cathedral.jpg" alt="Собор Зенкова">
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 10: Физминутка -->
+        <div class="slide" id="slide-10">
+            <div class="slide-content center-content pulse-bg">
+                <div class="stagger-1">
+                    <h2 style="margin-bottom: 10px;">Физминутка</h2>
+                </div>
+                <div class="stagger-2 video-wrapper">
+                    <video src="video/break.mp4" controls preload="metadata" ondblclick="toggleVideoFullScreen(this)"
+                        title="Дважды кликните по видео, чтобы развернуть на весь экран"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 11: Ассоциативный куст -->
+        <div class="slide" id="slide-11">
+            <div class="slide-content center-content pulse-bg" style="background: linear-gradient(135deg, #f8fbfb, #e0f2e9);">
+                <div class="stagger-1">
+                    <h2 style="font-size: 5rem; color: var(--accent-green); margin-bottom: 20px;">Ассоциативный куст</h2>
+                </div>
+                <div class="stagger-2">
+                    <p style="font-size: 2.2rem; color: #555; margin-bottom: 50px;">Нажимайте на карточки, чтобы открыть ассоциации к Алматы 30-х годов</p>
+                </div>
+
+                <div class="stagger-3" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 60px; align-items: center; max-width: 1200px; width: 100%;">
+                    <!-- Левая колонка -->
+                    <div style="display: flex; flex-direction: column; gap: 30px; align-items: flex-end;">
+                        <div class="bush-card" onclick="this.classList.toggle('flipped')">
+                            <div class="bush-inner">
+                                <div class="bush-front"><i class="fa-solid fa-leaf"></i> Открыть</div>
+                                <div class="bush-back" style="border-left: 10px solid #E9C46A;">Город Верный</div>
+                            </div>
+                        </div>
+                        <div class="bush-card" onclick="this.classList.toggle('flipped')">
+                            <div class="bush-inner">
+                                <div class="bush-front"><i class="fa-solid fa-leaf"></i> Открыть</div>
+                                <div class="bush-back" style="border-left: 10px solid #E76F51;">Город-сад</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Центр -->
+                    <div class="mindmap-center pulse-glow" style="background: linear-gradient(135deg, #2A9D8F, #40916c); color: white; border-radius: 50%; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 3rem; font-weight: 900; box-shadow: 0 20px 50px rgba(42,157,143,0.4); border: 10px solid white; line-height: 1.2;">
+                        Алматы<br>30-х
+                    </div>
+
+                    <!-- Правая колонка -->
+                    <div style="display: flex; flex-direction: column; gap: 30px; align-items: flex-start;">
+                        <div class="bush-card" onclick="this.classList.toggle('flipped')">
+                            <div class="bush-inner">
+                                <div class="bush-front"><i class="fa-solid fa-leaf"></i> Открыть</div>
+                                <div class="bush-back" style="border-left: 10px solid #6A994E;">А.П. Зенков</div>
+                            </div>
+                        </div>
+                        <div class="bush-card" onclick="this.classList.toggle('flipped')">
+                            <div class="bush-inner">
+                                <div class="bush-front"><i class="fa-solid fa-leaf"></i> Открыть</div>
+                                <div class="bush-back" style="border-left: 10px solid #F4A261;">Яблоки Апорт</div>
+                            </div>
+                        </div>
+                        <div class="bush-card" onclick="this.classList.toggle('flipped')">
+                            <div class="bush-inner">
+                                <div class="bush-front"><i class="fa-solid fa-leaf"></i> Открыть</div>
+                                <div class="bush-back" style="border-left: 10px solid #264653;">Землетрясение</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 12: Защита Постера -->
+        <div class="slide" id="slide-12">
+            <div class="slide-content center-content pulse-bg" style="position: relative; overflow: hidden; background: linear-gradient(135deg, #ffffff, #fff5f0);">
+                <!-- Animated background shapes for poster creation -->
+                <div class="drawing-shapes shape1"><i class="fa-solid fa-palette"></i></div>
+                <div class="drawing-shapes shape2"><i class="fa-solid fa-pen-nib"></i></div>
+                <div class="drawing-shapes shape3"><i class="fa-solid fa-paintbrush"></i></div>
+
+                <div class="stagger-1" style="position: relative; z-index: 2;">
+                    <h1 style="font-size: 5rem; color: #E76F51; margin-bottom: 20px;"><i class="fa-solid fa-users-viewfinder"></i> Создание и защита Постеров</h1>
+                </div>
+                <div class="stagger-2" style="position: relative; z-index: 2;">
+                    <p style="font-size: 2.5rem; color: #333; margin-bottom: 40px; font-weight: 700;">Тема: Алматы — город-сад</p>
+                </div>
+
+                <div class="stagger-3 timer-widget" style="position: relative; z-index: 2; padding: 60px 80px; background: rgba(255,255,255,0.95); width: 600px; text-align: center; border: 4px solid var(--accent-light-green);">
+                    <div id="timer-icon-wrap" style="position: absolute; top: -45px; left: 50%; transform: translateX(-50%); background: white; border-radius: 50%; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 4px solid var(--accent-light-green);">
+                        <i class="fa-solid fa-hourglass-half" id="timer-icon" style="font-size: 3.5rem; color: var(--accent-green);"></i>
+                    </div>
+                    <div class="timer-setup">
+                        <button onclick="adjustTimer(-1)" title="Уменьшить">-</button>
+                        <span><b id="timer-setting">15</b> мин</span>
+                        <button onclick="adjustTimer(1)" title="Увеличить">+</button>
+                    </div>
+                    <div class="time-display" id="timer-display">15:00</div>
+                    <div class="timer-controls">
+                        <button class="t-btn btn-start" onclick="startTimer()"><i class="fa-solid fa-play"></i>
+                            Старт</button>
+                        <button class="t-btn btn-pause" onclick="pauseTimer()"><i class="fa-solid fa-pause"></i>
+                            Пауза</button>
+                        <button class="t-btn btn-reset" onclick="resetTimer()"><i class="fa-solid fa-rotate-right"></i>
+                            Сброс</button>
+                    </div>
+                    <!-- Прогресс бар таймера -->
+                    <div class="timer-progress">
+                        <div class="timer-bar" id="timer-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <!-- Слайд 13: Рефлексия и ДЗ -->
+        <div class="slide" id="slide-13">
+            <div class="slide-content split-layout">
+                <div class="center-content stagger-1" style="flex: 1.2;">
+                    <h2>Рефлексия: Дерево чувств</h2>
+                    <p>Кликните по листку, чтобы оставить свой след.</p>
+
+                    <div class="leaves-interaction">
+                        <button class="leaf-btn green" onclick="addLeaf('green')"><i class="fa-solid fa-check"></i>
+                            Восторг</button>
+                        <button class="leaf-btn yellow" onclick="addLeaf('yellow')"><i
+                                class="fa-solid fa-face-smile"></i> Интерес</button>
+                        <button class="leaf-btn red" onclick="addLeaf('red')"><i class="fa-solid fa-question"></i>
+                            Задумчивость</button>
+                    </div>
+
+                    <div id="tree-canvas" class="tree-container">
+                        <img src="images/almaty_green_tiers.jpg" alt="Дерево">
+                    </div>
+                </div>
+                <div class="stagger-2" style="flex: 0.8;">
+                    <h2>Домашнее задание</h2>
+                    <div class="hw-box card-3d">
+                        <h3><i class="fa-solid fa-pen-nib"></i> Творческая работа</h3>
+                        <ul>
+                            <li>Составьте <b>Литературный синквейн</b> к слову «Сад» (существительное, 2 прилагательных,
+                                3 глагола, фраза, вывод).</li>
+                            <li>Напишите мини-эссе: "Отличается ли Алматы 30-х годов Домбровского от современного
+                                города?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ИИ Ассистент UI -->
+    <div id="ai-assistant">
+        <div class="ai-avatar" onclick="toggleAiMenu()">
+            <img src="images/irina_avatar.jpg" alt="ИИ Ассистент">
+            <div class="speech-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="ai-bubble" id="ai-bubble">
+            <p id="ai-text"></p>
+        </div>
+    </div>
+
+    <!-- Панель управления -->
+    <div id="teacher-controls">
+        <button class="ctrl-btn" onclick="prevSlide()" title="Предыдущий слайд (Стрелка влево)"><i
+                class="fa-solid fa-chevron-left"></i></button>
+        <div class="slide-indicator"><span id="current-slide">1</span> / <span id="total-slides">13</span></div>
+        <button class="ctrl-btn" onclick="nextSlide()" title="Следующий слайд (Стрелка вправо)"><i
+                class="fa-solid fa-chevron-right"></i></button>
+        <div class="divider"></div>
+        <button class="ctrl-btn ai-action" onclick="playCurrentAiAudio()" title="Запустить речь ИИ (Пробел)"><i
+                class="fa-solid fa-comment-dots"></i> Ассистент</button>
+        <div class="divider"></div>
+        <button class="ctrl-btn" onclick="toggleFullScreen()" title="На весь экран (F)"><i
+                class="fa-solid fa-expand"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
