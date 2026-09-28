@@ -68,22 +68,42 @@
         </div>
         
         <div class="card">
-            <h3><i class="fa-solid fa-list-check"></i> Ход урока</h3>
-            <p><strong>1. Организационный момент</strong><br>Психологический тренинг и приветствие ИИ.</p>
-            <p style="margin-top: 10px;"><strong>2. Введение в тему</strong><br>Знакомство со старой Алма-Атой через роман.</p>
-            <p style="margin-top: 10px;"><strong>3. Творение человека</strong><br>Анализ Вознесенского собора. Чтение по ролям.</p>
-            <p style="margin-top: 10px;"><strong>4. Интерактив</strong><br>Ассоциативный куст "Алматы 30-х".</p>
-            <p style="margin-top: 10px;"><strong>5. Творческая работа</strong><br>Создание и защита постеров (15 мин).</p>
+            <h3><i class="fa-solid fa-list-check"></i> Ход урока (45 минут)</h3>
+            <div style="margin-bottom: 15px;">
+                <strong>1. Введение (3 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Учитель объявляет тему урока и представляет необычного гостя. ИИ-ассистент отправляет класс в "путешествие во времени".</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>2. Контраст прибытия (8 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Анализ хмурой Москвы и цветущей Алма-Аты. Чтение текста, беседа об использованных художественных средствах (контраст).</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>3. Творение человека (7 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Рассказ о Соборе Зенкова и землетрясении. Чтение по ролям эпизода разговора со сторожем. Поиск эпитетов в тексте.</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>4. Физминутка (2 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Физические упражнения "Алматинские тополя" под видео.</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>5. Ассоциативный куст (5 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Класс подбирает слова-ассоциации (Город-сад, Апорт, Зенков и т.д.), которые открываются на интерактивной доске.</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>6. Защита постеров (15 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Команды представляют заранее подготовленные ватманы под интерактивный таймер на большом экране.</span>
+            </div>
+            <div style="margin-bottom: 5px;">
+                <strong>7. Рефлексия и ДЗ (5 мин)</strong><br>
+                <span style="font-size: 0.9rem; color: #666;">Ученики озвучивают эмоции через "Дерево чувств". Домашнее задание: синквейн и эссе.</span>
+            </div>
         </div>
     </div>
 
     <!-- Презентация -->
-    <div id="slides" class="section">
-        <div class="card" style="text-align: center; padding: 40px 20px;">
-            <i class="fa-solid fa-tv" style="font-size: 4rem; color: #ddd; margin-bottom: 20px;"></i>
-            <h3>Синхронизация слайдов</h3>
-            <p>Следите за презентацией на смарт-доске. Урок ведется в интерактивном формате с участием ИИ-ассистента.</p>
-        </div>
+    <div id="slides" class="section" style="padding: 0; height: calc(100vh - 80px - 90px);">
+        <!-- 80px = nav, 90px = header, so we make it take full available height -->
+        <iframe src="index.html?guest=true" style="width: 100%; height: 100%; border: none;"></iframe>
     </div>
 
     <!-- Отзыв -->

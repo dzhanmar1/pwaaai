@@ -1,4 +1,7 @@
 // Реплики ИИ
+const isGuest = new URLSearchParams(window.location.search).get('guest') === 'true';
+if (isGuest) document.body.classList.add('guest-mode');
+
 const aiScripts = {
     1: "Здравствуйте, друзья! Сегодня мы отправимся в путешествие во времени. Мы перенесемся в Алматы 30-х годов прошлого века, чтобы увидеть город-сад глазами писателя Юрия Домбровского. Добро пожаловать на открытый урок 7 «А» класса!",
     2: "Давайте настроимся на работу. Посмотрите на экран. Улыбнитесь друг другу, почувствуйте поддержку ваших одноклассников. С хорошим настроением любые задачи по плечу!",
@@ -87,9 +90,13 @@ function lessonReady() {
     if (qrImg) {
         let currentUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'guest.html';
         if(window.location.protocol === 'file:') {
-            currentUrl = "https://pwaaai.vercel.app/guest.html"; // Fallback URL для локального тестирования
+            currentUrl = "https://pwaaai.vercel.app/guest.html"; 
         }
         qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentUrl)}&color=2A9D8F`;
+    }
+    
+    if (isGuest) {
+        startLesson();
     }
 }
 
@@ -282,6 +289,13 @@ function playCurrentAiAudio() {
 
     const text = aiScripts[currentSlide];
     const bubble = document.getElementById('ai-bubble');
+    
+    if (isGuest) {
+        document.getElementById('ai-text').textContent = text;
+        bubble.classList.add('show');
+        return; // Для гостей просто показываем текст, без аудио
+    }
+
     document.getElementById('ai-text').textContent = ""; // Очищаем перед началом
     bubble.classList.add('show');
     
@@ -476,3 +490,50 @@ function addLeaf(color) {
     
     container.appendChild(leaf);
 }
+
+
+// Touch Support for mobile / guest mode
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const threshold = 50;
+    if (touchEndX < touchStartX - threshold) {
+        nextSlide(); // swipe left
+    }
+    if (touchEndX > touchStartX + threshold) {
+        prevSlide(); // swipe right
+    }
+}
+
+// Auto-scaling presentation to maintain 16:9 aspect ratio
+function resizePresentation() {
+    const presentation = document.getElementById('presentation');
+    if (!presentation) return;
+    
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    const baseWidth = 1920;
+    const baseHeight = 1080;
+    
+    const scale = Math.min(windowWidth / baseWidth, windowHeight / baseHeight);
+    
+    presentation.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+}
+
+window.addEventListener('resize', resizePresentation);
+// Инициализируем при загрузке
+document.addEventListener('DOMContentLoaded', resizePresentation);
+resizePresentation();
+
+
