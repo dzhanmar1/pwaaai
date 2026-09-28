@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Материалы для гостей | Открытый урок</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8fbfb;
+            --accent-green: #2A9D8F;
+            --accent-light: #e0f2e9;
+            --accent-orange: #E76F51;
+            --text-main: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--bg-color); color: var(--text-main); overflow-x: hidden; padding-bottom: 80px; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, var(--accent-green), #1a6b61); color: white; padding: 30px 20px 20px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 10px 20px rgba(42,157,143,0.2); }
+        h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        .subtitle { font-size: 0.9rem; opacity: 0.9; }
+
+        /* Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.05); border-top-left-radius: 25px; border-top-right-radius: 25px; z-index: 100; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #999; text-decoration: none; font-size: 0.8rem; gap: 5px; transition: 0.3s; cursor: pointer; }
+        .nav-item i { font-size: 1.5rem; }
+        .nav-item.active { color: var(--accent-green); }
+
+        /* Sections */
+        .section { display: none; padding: 25px 20px; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+
+        /* Cards */
+        .card { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .card h3 { color: var(--accent-green); margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { font-size: 0.95rem; line-height: 1.6; color: #555; }
+        .card ul { margin-left: 20px; margin-top: 10px; color: #555; font-size: 0.95rem; line-height: 1.6; }
+        
+        /* Badges */
+        .badge { display: inline-block; background: var(--accent-light); color: var(--accent-green); padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; }
+
+        /* Feedback Form */
+        input, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 15px; margin-bottom: 15px; font-size: 1rem; }
+        button { background: var(--accent-orange); color: white; border: none; padding: 15px; border-radius: 15px; width: 100%; font-size: 1.1rem; font-weight: 600; box-shadow: 0 10px 20px rgba(231,111,81,0.3); cursor: pointer; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="badge">Для гостей</div>
+        <h1>Ю. Домбровский</h1>
+        <p class="subtitle">Открытый урок (7 «А» класс)</p>
+    </header>
+
+    <!-- План урока -->
+    <div id="plan" class="section active">
+        <div class="card">
+            <h3><i class="fa-solid fa-bullseye"></i> Цели урока</h3>
+            <ul>
+                <li>Понимать содержание художественного текста, определяя главную и второстепенную информацию.</li>
+                <li>Анализировать средства выразительности (эпитеты, сравнения, метафоры).</li>
+                <li>Формировать навыки работы в команде и защиты своих идей.</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-list-check"></i> Ход урока</h3>
+            <p><strong>1. Организационный момент</strong><br>Психологический тренинг и приветствие ИИ.</p>
+            <p style="margin-top: 10px;"><strong>2. Введение в тему</strong><br>Знакомство со старой Алма-Атой через роман.</p>
+            <p style="margin-top: 10px;"><strong>3. Творение человека</strong><br>Анализ Вознесенского собора. Чтение по ролям.</p>
+            <p style="margin-top: 10px;"><strong>4. Интерактив</strong><br>Ассоциативный куст "Алматы 30-х".</p>
+            <p style="margin-top: 10px;"><strong>5. Творческая работа</strong><br>Создание и защита постеров (15 мин).</p>
+        </div>
+    </div>
+
+    <!-- Презентация -->
+    <div id="slides" class="section">
+        <div class="card" style="text-align: center; padding: 40px 20px;">
+            <i class="fa-solid fa-tv" style="font-size: 4rem; color: #ddd; margin-bottom: 20px;"></i>
+            <h3>Синхронизация слайдов</h3>
+            <p>Следите за презентацией на смарт-доске. Урок ведется в интерактивном формате с участием ИИ-ассистента.</p>
+        </div>
+    </div>
+
+    <!-- Отзыв -->
+    <div id="feedback" class="section">
+        <div class="card">
+            <h3><i class="fa-solid fa-comment-dots"></i> Оценочный лист гостя</h3>
+            <p style="margin-bottom: 15px;">Пожалуйста, оставьте обратную связь об уроке.</p>
+            <input type="text" placeholder="Ваше имя (необязательно)">
+            <textarea rows="4" placeholder="Ваши впечатления, плюсы и пожелания..."></textarea>
+            <button onclick="alert('Спасибо! Ваш отзыв успешно отправлен.')">Отправить отзыв</button>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('plan', this)">
+            <i class="fa-solid fa-book-open"></i>
+            <span>План</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('slides', this)">
+            <i class="fa-solid fa-images"></i>
+            <span>Слайды</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('feedback', this)">
+            <i class="fa-solid fa-star"></i>
+            <span>Отзыв</span>
+        </div>
+    </nav>
+
+    <script>
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            el.classList.add('active');
+        }
+    </script>
+</body>
+</html>

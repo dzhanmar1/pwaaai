@@ -81,6 +81,16 @@ function lessonReady() {
     const btn = document.getElementById('preloader-start-btn');
     if (text) text.textContent = "Ресурсы загружены! Урок готов.";
     if (btn) btn.style.display = 'block';
+    
+    // Генерируем QR код для гостей
+    const qrImg = document.getElementById('guest-qr');
+    if (qrImg) {
+        let currentUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'guest.html';
+        if(window.location.protocol === 'file:') {
+            currentUrl = "https://pwaaai.vercel.app/guest.html"; // Fallback URL для локального тестирования
+        }
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentUrl)}&color=2A9D8F`;
+    }
 }
 
 function startLesson() {
