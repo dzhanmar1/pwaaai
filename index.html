@@ -313,8 +313,22 @@
         </div>
 
 
-        <!-- Слайд 11: Письменная работа -->
+        <!-- Слайд 11: Физминутка -->
         <div class="slide" id="slide-11">
+            <div class="slide-content center-content pulse-bg">
+                <div class="stagger-1">
+                    <h2 style="margin-bottom: 10px;">Физминутка</h2>
+                </div>
+                <div class="stagger-2 video-wrapper">
+                    <video src="video/break.mp4" controls preload="metadata" ondblclick="toggleVideoFullScreen(this)"
+                        title="Дважды кликните по видео, чтобы развернуть на весь экран"></video>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Слайд 12: Письменная работа -->
+        <div class="slide" id="slide-12">
             <div class="slide-content center-content pulse-bg">
                 <div class="stagger-1">
                     <h2 style="font-size: 5rem; color: #E76F51; margin-bottom: 20px;">Письменная работа</h2>
@@ -326,20 +340,6 @@
                     <div style="margin-top: 30px; font-style: italic; color: #777; font-size: 1.8rem;">На выполнение задания у вас 5 минут.</div>
                 </div>
             </div>
-        </div>
-
-        <!-- Слайд 12: Физминутка -->
-        <div class="slide" id="slide-12">
-            <div class="slide-content center-content pulse-bg">
-                <div class="stagger-1">
-                    <h2 style="margin-bottom: 10px;">Физминутка</h2>
-                </div>
-                <div class="stagger-2 video-wrapper">
-                    <video src="video/break.mp4" controls preload="metadata" ondblclick="toggleVideoFullScreen(this)"
-                        title="Дважды кликните по видео, чтобы развернуть на весь экран"></video>
-                </div>
-            </div>
-        </div>
 
         <!-- Слайд 13: Защита Постера -->
         <div class="slide" id="slide-13">
@@ -448,6 +448,9 @@
                 class="fa-solid fa-expand"></i></button>
     </div>
 
+
+    <!-- Фоновая музыка -->
+    <audio id="bg-music" src="audio/back-music.mp3" loop></audio>
     <script src="script.js"></script>
 </body>
 
